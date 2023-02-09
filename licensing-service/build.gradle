@@ -1,0 +1,21 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'mysql:mysql-connector-java'
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.security:spring-security-rsa'
+
+    implementation 'org.projectlombok:lombok:1.18.12'
+
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+bootJar {
+    mainClass = 'com.autobots.licenses.LicensingServiceApplication'
+    manifest {
+        attributes(
+                'Main-Class': 'org.springframework.boot.loader.PropertiesLauncher'
+        )
+    }
+}

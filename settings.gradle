@@ -1,0 +1,4 @@
+rootProject.name = 'autobots-springcloud-microservices'
+include 'licensing-service'
+include 'config-server'
+

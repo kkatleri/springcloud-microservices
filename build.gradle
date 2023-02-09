@@ -1,0 +1,41 @@
+buildscript {
+    ext {
+        springBootVersion = '3.0.2'
+            springCloudVersion = '2022.0.0' //aka Kilburn
+        lombokPluginVersion = '6.6.1'
+    }
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "io.freefair.gradle:lombok-plugin:${lombokPluginVersion}"
+    }
+}
+
+allprojects {
+    group = groupId
+    version = currentVersion
+}
+
+subprojects{
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'io.freefair.lombok'
+
+    sourceCompatibility = 19
+    targetCompatibility = 19
+
+    repositories {
+        mavenCentral()
+        maven { url 'https://repo.spring.io/milestone' }
+    }
+
+    dependencies {
+        implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+    }
+}
